@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "NotoSansJP";
+    src: url("../assets/fonts/NotoSansJP-Medium.otf") format("opentype"),
+    url("../assets/fonts/NotoSansJP-Regular.otf") format("opentype");
+}
+
+h1 {
+    color: #2077b3;
+    font-family: NotoSansJP, serif;
+}
+
+a {
+    text-decoration: none;
+}
