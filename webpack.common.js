@@ -3,54 +3,39 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 const WebpackDevServer = require('webpack-dev-server');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const stylesHandler = isProduction
-	? MiniCssExtractPlugin.loader
-	: "style-loader";
+
 
 
 const config = {
 	entry: {
 		main: {import: './src/app/index.js'},
-		home: {import: './src/app/home.js'}
 	},
 	output: {
 		publicPath: "auto",
 		path: path.resolve(__dirname,'build'),
 		filename: 'assets/js/[name].[contenthash].js',
-		pathinfo: true
+		pathinfo: true,
+		clean:true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: "Welcome",
 			filename: 'index.html',
+			title: "Ahmed BZ",
 			template: 'src/pages/index.html',
 			chunks: ['main'],
-			hash: false
-		}),
-		new HtmlWebpackPlugin({
-			title: "Home Page",
-			filename: 'home.html',
-			chunks: ['home'],
-			template: 'src/pages/home.html',
 			hash: false,
+			inject:true
 		}),
 		new WebpackManifestPlugin({
 			basePath: '',
 			filename: '[name][ext]'
 		}),
-		new MiniCssExtractPlugin({
-			filename: 'assets/css/[name].css',
-			chunkFilename: '[name].css'
-		}),
-		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns: [],
-		})
+
+
 	],
 	module: {
 		rules: [
@@ -73,14 +58,18 @@ const config = {
 				use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
 			},
 			{
-				test: /\.css$/i,
-				use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
-			},
-			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
 				generator: {
 					filename: 'assets/images/[hash][ext][query]',
+				}
+
+			},
+			{
+				test: /\.(pdf)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'assets/doc/[hash][ext][query]',
 				}
 
 			},

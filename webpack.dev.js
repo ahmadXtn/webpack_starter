@@ -23,8 +23,15 @@ module.exports = merge(common, {
 	},
 	plugins: [
 		new FaviconsWebpackPlugin({
-			logo: 'src/assets/svg/cassette.svg',
-
-		})
-	]
+			logo: 'src/assets/svg/peep-2.svg',
+		}),
+	],
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: ["style-loader", "css-loader","postcss-loader"],
+			}
+		]
+	}
 })

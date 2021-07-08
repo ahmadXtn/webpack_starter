@@ -1,22 +1,14 @@
+import './sc.js';
 import '../styles/style.css';
-import backgroundImg from '../assets/images/coding.jpg';
-import _ from 'lodash';
 
 
-function createComponent() {
-	const htmlHeadingElement=document.createElement('h1');
-	htmlHeadingElement.innerHTML="Heading created from index?js";
-	htmlHeadingElement.style.color="red";
+import CV from '../assets/doc/Bouazizi_Ahmed.pdf';
 
-	const htmlImageElement = new Image(500, 500);
-	htmlImageElement.src = backgroundImg;
 
-	return {
-		img:htmlImageElement,
-		heading:htmlHeadingElement
-	};
+function downloadCv() {
+	const cvLink = document.getElementById('cv');
+	cvLink.href = CV;
 }
 
 
-document.body.appendChild(createComponent().heading);
-document.body.appendChild(createComponent().img);
+downloadCv();
