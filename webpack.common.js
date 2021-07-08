@@ -4,37 +4,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 const WebpackDevServer = require('webpack-dev-server');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 
-const PATHS = {
-	dist: path.resolve(__dirname, 'dist'),
-	src: path.resolve(__dirname, 'src'),
-};
+const isProduction = process.env.NODE_ENV === "production";
+
+const stylesHandler = isProduction
+	? MiniCssExtractPlugin.loader
+	: "style-loader";
 
 
 const config = {
-	target: "web",
-	name: "demo",
-	mode: 'development',
 	entry: {
 		main: {import: './src/app/index.js'},
 		home: {import: './src/app/home.js'}
 	},
 	output: {
 		publicPath: "auto",
-		path: PATHS.dist,
+		path: path.resolve(__dirname,'build'),
 		filename: 'assets/js/[name].[contenthash].js',
 		pathinfo: true
-	},
-	optimization: {
-		removeAvailableModules: false,
-		removeEmptyChunks: false,
-		splitChunks: {
-			chunks: 'all',
-		},
-		runtimeChunk: 'single',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -59,11 +48,9 @@ const config = {
 			filename: 'assets/css/[name].css',
 			chunkFilename: '[name].css'
 		}),
-		new FaviconsWebpackPlugin({
-			logo: 'src/assets/svg/cassette.svg',
-
-		}),
-		new CleanWebpackPlugin({})
+		new CleanWebpackPlugin({
+			cleanOnceBeforeBuildPatterns: [],
+		})
 	],
 	module: {
 		rules: [
@@ -80,7 +67,6 @@ const config = {
 						}
 					}
 				],
-
 			},
 			{
 				test: /\.s[ac]ss$/i,
