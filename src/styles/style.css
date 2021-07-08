@@ -1382,7 +1382,8 @@ button, input, select, textarea, label {
         top: 450px;
         left: 330px
     }
-    .button-primary{
+
+    .button-primary {
         width: 10rem;
     }
 }
@@ -1591,7 +1592,6 @@ main {
 }
 
 
-
 .footer-links a {
     color: #fff
 }
@@ -1614,7 +1614,7 @@ main {
     }
 
     .footer-brand, .footer-copyright {
-        justify-content: flex-start
+        justify-content: flex-end;
     }
 
     .footer-links {
