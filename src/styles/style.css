@@ -1211,7 +1211,7 @@ button, input, select, textarea, label {
 
 .site-header {
     position: relative;
-    padding: 24px 0
+    padding-top: 24px;
 }
 
 .site-header-inner {
@@ -1312,7 +1312,13 @@ button, input, select, textarea, label {
 }
 
 .hero-illustration-browser {
-    position: relative
+    position: relative;
+
+}
+
+
+.hero-illustration-browser p {
+
 }
 
 .hero-illustration-browser svg {
@@ -1355,6 +1361,8 @@ button, input, select, textarea, label {
 }
 
 @media (min-width: 641px) {
+
+
     .hero-paragraph {
         padding-left: 72px;
         padding-right: 72px
@@ -1389,9 +1397,11 @@ button, input, select, textarea, label {
 }
 
 @media (min-width: 1025px) {
+
+
     .hero {
         text-align: left;
-        padding-top: 80px;
+        padding-top: 40px;
         padding-bottom: 80px
     }
 
@@ -1555,7 +1565,7 @@ main {
     padding-bottom: 40px
 }
 
-.footer-links, .social-links, .footer-copyright {
+.footer-links, .footer-copyright {
     flex: none;
     width: 100%;
     display: inline-flex;
@@ -1577,6 +1587,7 @@ main {
 
 .copy-year {
     padding: 1px 0;
+    color: whitesmoke;
 }
 
 .footer-brand, .footer-links, .social-links {
@@ -1633,3 +1644,13 @@ main {
     }
 }
 
+.portrait-wrapper {
+    width: 100px;
+    display: inline-block;
+
+}
+
+.portrait-wrapper img {
+    border-radius: 50%;
+    object-fit: contain;
+}

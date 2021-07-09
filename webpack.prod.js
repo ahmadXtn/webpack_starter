@@ -47,7 +47,7 @@ module.exports = merge(common, {
 				developerName: 'Me',
 				developerURL: null,
 				background: '#ddd',
-				theme_color: '#333',
+				theme_color: '#68788C',
 				icons: {
 					coast: false,
 					yandex: false

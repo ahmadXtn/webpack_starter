@@ -13,7 +13,9 @@
     "@popperjs/core": "2.9.2",
     "bootstrap": "^5.0.2",
     "jquery": "^3.6.0",
-    "mini-css-extract-plugin": "^2.1.0"
+    "micromodal": "^0.4.6",
+    "mini-css-extract-plugin": "^2.1.0",
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
